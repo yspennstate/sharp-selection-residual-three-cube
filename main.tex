@@ -24,7 +24,7 @@
 \begin{document}
 
 \begin{abstract}
-Let $F_1,\dots,F_n$ be upper semicontinuous set-valued maps from the cube $[0,1]^3$ to its nonempty compact subsets. We show that there are a point $x$ and points $y_i\in F_i(x)$ with $\|x-\frac1n\sum_i y_i\|\le 3\sqrt3/(4n)$, and that for every $n\ge3$ the constant is attained by maps whose values have at most two points. The Shapley--Folkman--Starr theorem gives the constant $3/2$ in place of $3\sqrt3/4$. The proof reduces the problem to choosing one point from each of three two-point sets $c_i\pm u_i$ in the cube at random, under a joint law of our choosing, and finds the largest expected squared error that the best law can be forced to have. When the columns of $U=(u_1\,u_2\,u_3)$ are perpendicular the problem reduces to an inequality for orthonormal frames, and the remaining case to an exact computation in rational arithmetic.
+Let $F_1,\dots,F_n$ be upper semicontinuous set-valued maps from the cube $[0,1]^3$ to its nonempty compact subsets. We show that there are a point $x$ and points $y_i\in F_i(x)$ with $\|x-\frac1n\sum_i y_i\|\le 3\sqrt3/(4n)$, and that for every $n\ge3$ the constant is attained by maps whose values have at most two points. The Shapley--Folkman--Starr theorem gives the constant $3/2$ in place of $3\sqrt3/4$. The proof reduces the problem to choosing one point from each of three two-point sets in the cube at random, under a joint law of our choosing, and finds the largest expected squared error that the best law can be forced to have. When the three differences within these sets are mutually perpendicular the problem reduces to an inequality for orthonormal frames, and the remaining case to an exact computation in rational arithmetic.
 \end{abstract}
 
 \maketitle
@@ -50,7 +50,7 @@ We call the least value of $\|x-\frac1n\sum_iy_i\|$ over $x\in[0,1]^3$ and $y_i\
 with equality for $(-\frac12,1,1)$, $(1,-\frac12,1)$, $(1,1,-\frac12)$, whereas perpendicular vectors whose only constraint is length at most $\sqrt3$ reach $9$. In the second case symmetries bring the matrix to one of two forms with four free entries in $[-1,1]$; we cut this parameter set into finitely many simplices and prove the bound on each by inequalities between rational numbers, checked by a computer program. The result is the following.
 
 \begin{thm}\label{thm:main}
-Let $F_1,\dots,F_n$ be upper semicontinuous maps from $C=[0,1]^3$ to the nonempty compact subsets of $C$. There are $x\in C$ and $y_i\in F_i(x)$ with
+Let $F_1,\dots,F_n$ be upper semicontinuous maps from $C=[0,1]^3$ to the nonempty compact subsets of $C$. There are $x\in C$ and $y_i\in F_i(x)$ such that, in the Euclidean norm,
 \begin{equation}\label{eq:main}
 \Bigl\|x-\frac1n\sum_{i=1}^n y_i\Bigr\|^2\le\frac{27}{16n^2}.
 \end{equation}
@@ -116,7 +116,7 @@ There is a finite set $\mathcal L$ of linear forms on $\mathbb R^3$ with the fol
 \end{lem}
 
 \begin{proof}
-Lift each sign vector $s$ to the point $(s,h_s)\in\mathbb R^4$ with $h_s=\|Us\|^2$. The function $t\mapsto\min_{p\in\Pi(t)}\sum_sp_sh_s$ is the lower convex envelope of the lifted points over the cube, and $V(U,t)$ is this envelope minus $\|Ut\|^2$. For a tetrahedron $T$ with vertices in $\{-1,1\}^3$, that is, a set of four affinely independent sign vectors, let $\alpha_T$ be the affine function on $\mathbb R^3$ that agrees with $h$ on $T$. If $\alpha_T(s)\le h_s$ for all eight $s$, then $\alpha_T$ is an affine minorant of the heights, so the envelope is at least $\alpha_T$, and for $t\in\conv T$ the barycentric law on $T$ has expected squared error $\alpha_T(t)$; it is therefore optimal. Conversely, the envelope is piecewise affine, equal on each cell of the lower subdivision to an affine function $\alpha_T$ of this kind, and a full-dimensional cell of the lower subdivision that contains $t$ contains it in the convex hull of some tetrahedron of its own vertices, all of which lie on one such $\alpha_T$. So at each $t$ some $T$ with $t\in\conv T$ passes all eight tests $\alpha_T(s)\le h_s$.
+Lift each sign vector $s$ to the point $(s,h_s)\in\mathbb R^4$ with $h_s=\|Us\|^2$. The function $t\mapsto\min_{p\in\Pi(t)}\sum_sp_sh_s$ is the lower convex envelope of the lifted points over the cube, and $V(U,t)$ is this envelope minus $\|Ut\|^2$. For a tetrahedron $T$ with vertices in $\{-1,1\}^3$, that is, a set of four affinely independent sign vectors, let $\alpha_T$ be the affine function on $\mathbb R^3$ that agrees with $h$ on $T$. If $\alpha_T(s)\le h_s$ for all eight $s$, then $\alpha_T$ is an affine minorant of the heights, so the envelope is at least $\alpha_T$, and for $t\in\conv T$ the barycentric law $p$ on $T$ has $\sum_sp_sh_s=\alpha_T(t)$, so its expected squared error is $\alpha_T(t)-\|Ut\|^2$ and it is optimal. Conversely, the envelope is piecewise affine, equal on each cell of the lower subdivision (the subdivision of the cube by the projections of the lower faces of $\conv\{(s,h_s)\}$) to an affine function $\alpha_T$ of this kind, and a full-dimensional cell of the lower subdivision that contains $t$ contains it in the convex hull of some tetrahedron of its own vertices, all of which lie on one such $\alpha_T$. So at each $t$ some $T$ with $t\in\conv T$ passes all eight tests $\alpha_T(s)\le h_s$.
 
 By \eqref{eq:heights} each difference $h_s-\alpha_T(s)$ is a linear form in $g$ with coefficients determined by $T$ and $s$: the constant $\sum_i\|u_i\|^2$ is common to all heights and cancels. Let $\mathcal L$ consist of these forms that are not identically zero. On $\mathcal U$ the tetrahedra passing all tests are therefore the same for every matrix, and one such tetrahedron $T$ with $t\in\conv T$ supplies a law optimal for every $U\in\mathcal U$.
 \end{proof}
@@ -126,7 +126,7 @@ There is a maximizer $(U,t)$ of $V$ in which every row of $U$ has an entry of ab
 \end{lem}
 
 \begin{proof}
-Replacing a row $r$ of $U$ by $\mu r$ with $\mu\ge1$ multiplies the $r$-th coordinate of $U(s-t)$ by $\mu$ and so does not decrease the expected squared error of any law; hence it does not decrease $V$. Starting from any maximizer, scale each nonzero row until its largest entry has absolute value one. If a row is zero, replace it by $(1,0,0)$: the expected squared error of every law in $\Pi(t)$ increases by $\E(s_1-t_1)^2=1-t_1^2>0$, so $V$ increases strictly, which is impossible at a maximizer.
+Replacing the $r$-th row $w$ of $U$ by $\mu w$ with $\mu\ge1$ multiplies the $r$-th coordinate of $U(s-t)$ by $\mu$ and so does not decrease the expected squared error of any law; hence it does not decrease $V$. Starting from any maximizer, scale each nonzero row until its largest entry has absolute value one. If a row is zero, replace it by $(1,0,0)$: the expected squared error of every law in $\Pi(t)$ increases by $\E(s_1-t_1)^2=1-t_1^2>0$, so $V$ increases strictly, which is impossible at a maximizer.
 \end{proof}
 
 Recall that a row is full if all three of its entries have absolute value one.
@@ -192,7 +192,7 @@ Suppose $U$ has a full row and every row has an entry of absolute value one. Per
 \begin{equation}\label{eq:boxes}
 U_0=\begin{pmatrix}1&1&1\\1&\kappa_1&\kappa_2\\1&\kappa_3&\kappa_4\end{pmatrix},\qquad U_1=\begin{pmatrix}1&1&1\\1&\kappa_1&\kappa_2\\\kappa_3&1&\kappa_4\end{pmatrix},
 \end{equation}
-with $(\kappa_1,\kappa_2,\kappa_3,\kappa_4)\in[-1,1]^4$.
+with $(\kappa_1,\kappa_2,\kappa_3,\kappa_4)\in[-1,1]^4$. For $\pi\in[-1,1]^4$ write $U(\pi)$ for $U_0$, or for $U_1$, with $(\kappa_1,\dots,\kappa_4)=\pi$; what follows holds for each of the two.
 
 We prove this by a finite certificate. For a closed simplex $\Delta\subset[-1,1]^4$ of parameters with vertices $\pi_0,\dots,\pi_4$, a \emph{certificate} is one of the following.
 \begin{enumerate}
@@ -214,10 +214,10 @@ With $Y=U(\pi)s$ for $s$ distributed by $p$, $\E\|Y-\E Y\|^2=\E\|Y-o\|^2-\|\E Y-
 
 The program \texttt{check\_full\_row.py} (see the data availability statement) produces certificates for a subdivision of the parameter cube $[-1,1]^4$ of each matrix in \eqref{eq:boxes}. Every test is an exact integer or rational comparison. Each parameter cube is first cut into the $24$ simplices of the Kuhn triangulation \cite{Kuhn60} of $[-1,1]^4$. A simplex without a certificate is bisected at the midpoint of a longest edge: each half replaces one endpoint of that edge by the midpoint. All parameter vertices are dyadic rationals, held as integers in a common unit. For (C), the program lists the tetrahedra of sign vectors that admit a center at every vertex of the simplex. It tries the midpoint of a pair of the four images, the circumcenter of a triangle in its own plane, and the circumcenter of the four; a center is accepted only after the four squared distances are checked exactly. It then searches the list for a family with disjoint interiors and total volume $8$. Disjointness of two tetrahedra is certified by an integer direction on which their projections are disjoint, and volumes are absolute values of integer determinants.
 
-With the depth limits given in the program the subdivision closes completely: $1{,}776$ simplices carry certificates of type (C) and $20$ of type (I), with $414$ distinct matrices evaluated, and no simplex is left uncertified. Together with Lemma~\ref{lem:cert} this proves $V\le27/4$ in the full-row case, and completes the proof of Theorem~\ref{thm:V}.
+With the depth limits given in the program every simplex of the subdivision is settled: $1{,}776$ simplices carry certificates of type (C) and $20$ of type (I), with $414$ distinct matrices evaluated, and no simplex is left uncertified. Together with Lemma~\ref{lem:cert} this proves $V\le27/4$ in the full-row case, and completes the proof of Theorem~\ref{thm:V}.
 
 \begin{rem}\label{rem:strict}
-The same program, run with $27/4$ replaced by $20/3$, certifies $V\le20/3$ for both matrices with $2{,}834$ certificates of type (C) and none left over. So at a maximizer of $V$ no row is full, since by Lemma~\ref{lem:rows} scaling rows only increases $V$ and preserves a full row. Proposition~\ref{prop:dichotomy} then gives $g=0$, the equality case of Proposition~\ref{prop:frames} fixes the frame and all three squared lengths equal to $9/4$, and $V=\sum_i\frac94(1-t_i^2)$ forces $t=0$. Thus the maximizers of $V$ are exactly the configurations of Theorem~\ref{thm:V} up to signed permutations of coordinates and columns.
+The same program, run with $27/4$ replaced by $20/3$, certifies $V\le20/3$ for both matrices with $2{,}834$ certificates of type (C) and none left over. So at a maximizer of $V$ no row is full, since by Lemma~\ref{lem:rows} scaling rows does not decrease $V$ and preserves a full row. Proposition~\ref{prop:dichotomy} then gives $g=0$, the equality case of Proposition~\ref{prop:frames} fixes the frame and all three squared lengths equal to $9/4$, and $V=\sum_i\frac94(1-t_i^2)$ forces $t=0$. Thus the maximizers of $V$ are exactly the configurations of Theorem~\ref{thm:V} up to signed permutations of coordinates and columns.
 \end{rem}
 
 \section{Attainment}\label{sec:attain}
