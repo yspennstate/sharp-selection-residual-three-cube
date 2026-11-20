@@ -1,8 +1,8 @@
-"""A second grid proof using only enclosing balls and separated tetrahedra."""
+"""Enclosing-ball centers and pairwise separated tetrahedra of sign vectors."""
 from fractions import Fraction as F
 from functools import cache
 from itertools import combinations, product
-from check_grid import SIGNS, dot, sub, cross, det, orbit, positive, vertices
+from check_grid import SIGNS, dot, sub, cross, det, positive, vertices
 
 TETS=[t for t in combinations(range(8),4)
       if det(*(sub(SIGNS[i],SIGNS[t[0]]) for i in t[1:]))]
@@ -67,22 +67,3 @@ def admissible_tetrahedra(cols,limit):
                for count in (2,3,4) for s in combinations(t,count)):
             good|=1<<i
     return good
-
-def run(m,raw):
-    limit=raw*m*m
-    dirs=[v for v in product(range(-m,m+1),repeat=3) if v!=(0,0,0) and positive(v)==v]
-    lengths={v:dot(v,v) for v in dirs}
-    seen=set()
-    checked=0
-    for cols in combinations(dirs,3):
-        if sum(lengths[v] for v in cols)<=limit or cols in seen or not det(*cols):
-            continue
-        seen.update(orbit(cols))
-        assert fills(admissible_tetrahedra(cols,limit)),cols
-        checked+=1
-    print(f'm={m}: volume-six covers verified for {checked} full-rank orbits above {raw}')
-    return checked
-
-if __name__=='__main__':
-    run(1,F(13,2))
-    run(2,F(27,4))

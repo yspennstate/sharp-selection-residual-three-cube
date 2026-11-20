@@ -16,8 +16,7 @@ standard library:
     cd code
     python check_full_row.py
 
-`check_full_row.py` imports `check_grid.py` and `check_cover.py`; each of these two modules also has a main program of
-its own, for an earlier grid check that the paper does not use. It prints three lines, recorded in
+`check_full_row.py` imports its helper functions from `check_grid.py` and `check_cover.py`. It prints three lines, recorded in
 `code/full_row_checks.txt`:
 
     bound 27/4 depth 24 alternate False counts {'cover': 1776, 'independent': 20, 'unproved': 0} matrices 414
