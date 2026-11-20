@@ -1,0 +1,3 @@
+bound 27/4 depth 24 alternate False counts {'cover': 1776, 'independent': 20, 'unproved': 0} matrices 414
+bound 27/4 depth 28 alternate True counts {'cover': 1632, 'independent': 22, 'unproved': 0} matrices 411
+bound 20/3 depth 28 alternate False counts {'cover': 2834, 'unproved': 0} matrices 668

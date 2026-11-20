@@ -1,0 +1,293 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,lmodern}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The Sharp Selection Residual for Set-Valued Maps on the Three-Cube},pdfauthor={Yitzchak Shmalo}}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{question}[thm]{Question}
+\numberwithin{equation}{section}
+\newcommand{\E}{\mathbb E}
+\DeclareMathOperator{\conv}{conv}
+
+\title[The selection residual on the three-cube]{The Sharp Selection Residual for Set-Valued Maps on the Three-Cube}
+\author[Yitzchak Shmalo]{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
+\email{yitzchak.shmalo@gmail.com}
+\subjclass[2020]{Primary 47H04; Secondary 52A20, 91B50}
+\keywords{Kakutani fixed point theorem, Shapley--Folkman--Starr theorem, set-valued maps, selections}
+
+\newcommand{\doi}[1]{doi:\href{https://doi.org/#1}{#1}}
+\begin{document}
+
+\begin{abstract}
+Let $F_1,\dots,F_n$ be upper semicontinuous set-valued maps from the cube $[0,1]^3$ to its nonempty compact subsets. We show that there are a point $x$ and points $y_i\in F_i(x)$ with $\|x-\frac1n\sum_i y_i\|\le 3\sqrt3/(4n)$, and that for every $n\ge3$ the constant is attained by maps whose values have at most two points. The Shapley--Folkman--Starr theorem gives the constant $3/2$ in place of $3\sqrt3/4$. The proof reduces the problem to choosing one endpoint from each of three segments in the cube at random, under a joint law of our choosing, and finds the largest expected squared error that the best law can be forced to have. Perpendicular segments reduce to an inequality for orthonormal frames, and the remaining case to an exact computation in rational arithmetic.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Kakutani's theorem \cite{Kakutani41} gives a point $x$ of a compact convex set $K$ with $x\in F(x)$ when $F$ is upper semicontinuous with nonempty compact convex values. When the values are not convex one can apply it to the average of the convex hulls of several maps $F_1,\dots,F_n$ and ask how close the average of genuine selections $y_i\in F_i(x)$ can be brought to $x$. The Shapley--Folkman--Starr theorem \cite{Starr69} answers this with a bound independent of $n$ on the distance between a point of $\sum_i\conv F_i(x)$ and the set $\sum_iF_i(x)$: in $\mathbb R^d$ the squared distance is at most the sum of the $d$ largest squared circumradii of the sets $F_i(x)$. On the cube $[0,1]^d$, whose circumradius is $\sqrt d/2$, this gives
+\[
+\Bigl\|x-\frac1n\sum_{i=1}^n y_i\Bigr\|^2\le\frac{d^2}{4n^2},
+\]
+that is, $9/(4n^2)$ for $d=3$. Budish and Reny \cite{BudishReny20} bound the squared distance by $dD^2/4$ when $n>d$ and every set has diameter at most $D$ (see \cite[Corollary~1.5]{WuTang24}). Wu and Tang \cite[Theorem~2.1 and Corollary~2.2]{WuTang24} attach to the point of the convex hull an integer $k\le d$ and bound the squared distance by
+\[
+\frac12\min\Bigl\{\frac{nkD^2}{n+k},\ \sum_{i=1}^nD_i^2-\frac1{n+k}\Bigl(\sum_{i=1}^nD_i\Bigr)^2\Bigr\},
+\]
+where $D_i\le D$ are the diameters of the sets, and by $kD^2/4$ when $n\ge k$. For compact subsets of $[0,1]^3$ the diameters can all equal $\sqrt3$. The Budish--Reny bound then gives $9/(4n^2)$ for the average when $n\ge4$, the threshold being the condition $n>d$, and the Wu--Tang bound with $k=3$ gives $9/(4n^2)$ for every $n\ge3$. Ambrus and Bozzai \cite{AmbrusBozzai} study colorful vector balancing; its constant is $\sqrt d$ from the Euclidean ball to the Euclidean norm and at most $22\sqrt d$ from the cube to the maximum norm \cite[Theorems~1.4 and~1.5]{AmbrusBozzai}. The cube with the Euclidean norm is not among these cases.
+
+No bound that depends only on the diameters or the circumradii of the sets can give less than $9/(4n^2)$ when $n\ge3$. Let three of the sets be the endpoint pairs of three mutually perpendicular segments of length $\sqrt3$ in $\mathbb R^3$, and let the others be single points. Every selection then lies at squared distance exactly $9/(4n^2)$ from the average of the midpoints and the points, which lies in the average of the convex hulls. These segments do not fit in a unit cube: a segment of length $\sqrt3$ in $[0,1]^3$ is a main diagonal, and no two main diagonals are perpendicular, since $(1,1,1)\cdot(1,1,-1)=1$. A better constant must therefore use the fact that all the sets lie in one cube.
+
+We call the least value of $\|x-\frac1n\sum_iy_i\|$ over $x\in[0,1]^3$ and $y_i\in F_i(x)$ the \emph{selection residual} of $F_1,\dots,F_n$, and we determine its largest possible value on the three-cube. The map $x\mapsto2x-(1,1,1)$ carries $[0,1]^3$ onto $[-1,1]^3$, and there the bound $27/(16n^2)$ of Theorem~\ref{thm:main} below becomes $\|\sum_iy_i-nx\|^2\le27/4$. On $[-1,1]^3$, Kakutani's theorem and a vertex of a polytope of coefficient vectors reduce the problem to three two-point sets $c_i\pm u_i$ with $u_i\in[-1,1]^3$. One point is chosen from each at random, under a joint law of our choosing with prescribed means; some outcome then does no worse than the mean squared error. The least expected squared error over these laws is a function of $u_1,u_2,u_3$ and of the prescribed means, and its maximum is attained where either the $u_i$ are mutually perpendicular, or the matrix $(u_1\,u_2\,u_3)$ has a \emph{full} row, one whose entries are all $\pm1$. In the first case, for mutually perpendicular $u_1,u_2,u_3\in[-1,1]^3$, the bound comes down to
+\[
+\|u_1\|^2+\|u_2\|^2+\|u_3\|^2\le\frac{27}4,
+\]
+with equality for $(-\frac12,1,1)$, $(1,-\frac12,1)$, $(1,1,-\frac12)$, whereas perpendicular vectors whose only constraint is length at most $\sqrt3$ reach $9$. In the second case symmetries bring the matrix to one of two forms with four free entries in $[-1,1]$; we cut this parameter set into finitely many simplices and prove the bound on each by inequalities between rational numbers, checked by a computer program. The result is the following.
+
+\begin{thm}\label{thm:main}
+Let $F_1,\dots,F_n$ be upper semicontinuous maps from $C=[0,1]^3$ to the nonempty compact subsets of $C$. There are $x\in C$ and $y_i\in F_i(x)$ with
+\begin{equation}\label{eq:main}
+\Bigl\|x-\frac1n\sum_{i=1}^n y_i\Bigr\|^2\le\frac{27}{16n^2}.
+\end{equation}
+For every $n\ge3$ there are such maps, each value of which has at most two points, for which every $x\in C$ and every choice of $y_i\in F_i(x)$ give equality or a larger left side in \eqref{eq:main}.
+\end{thm}
+
+In other words, the selection residual of upper semicontinuous maps from $[0,1]^3$ to its nonempty compact subsets is at most $3\sqrt3/(4n)$, and for $n\ge3$ this is its largest value. The constant $27/16$ is three quarters of the constant $9/4$ of the Shapley--Folkman--Starr theorem. In dimensions $d$ in which a Hadamard matrix exists, the bound $d^2/(4n^2)$ of that theorem on $[0,1]^d$ is attained for $n\ge d$ (Proposition~\ref{prop:hadamard}), and $d=3$ is the first dimension in which it is not. In the extremal configuration three of the maps take two values each, symmetric about the center of the cube, and the three half-differences are the columns of $\frac34$ times an orthogonal matrix whose entries have absolute values $\frac13,\frac23,\frac23$ in each column (Section~\ref{sec:attain}). For these the eight possible selections miss the center by the same distance.
+
+The proof has four parts. Section~\ref{sec:reduction} uses Kakutani's theorem and a vertex of a polytope of coefficient vectors to reduce Theorem~\ref{thm:main} to a rounding problem: given three segments $c_i\pm u_i$ in the cube and prescribed means, choose endpoints at random, under any joint law with these means, so as to minimize the expected squared error of the sum. Theorem~\ref{thm:V} says that on the cube $[-1,1]^3$ this minimum never exceeds $27/4$. Section~\ref{sec:ext} proves the dichotomy between perpendicular columns and a full row for the matrix $U=(u_1\,u_2\,u_3)$. Section~\ref{sec:perp} treats perpendicular directions; there the problem becomes the maximization of $\sum_i\|q_i\|_\infty^{-2}$ over orthonormal frames $(q_1,q_2,q_3)$, and as a by-product we recover the theorem of Teixeira and Meyer~\cite{TeixeiraMeyer} that a $3\times3$ orthogonal matrix has an entry of absolute value at least $2/3$. Section~\ref{sec:full} treats a full row by a finite certificate in exact arithmetic.
+
+\section{Reduction to a rounding problem}\label{sec:reduction}
+
+We work on the cube $Q=[-1,1]^3$. The map $x\mapsto2x-(1,1,1)$ carries $C$ onto $Q$ and multiplies distances by $2$, so \eqref{eq:main} on $C$ is equivalent to
+\begin{equation}\label{eq:mainQ}
+\Bigl\|\sum_{i=1}^n y_i-nx\Bigr\|^2\le\frac{27}{4}
+\end{equation}
+for maps from $Q$ to its compact subsets.
+
+Put $G(x)=\frac1n\sum_i\conv F_i(x)$. The convex hull of a compact set in $\mathbb R^3$ is compact, the map $x\mapsto\conv F_i(x)$ is upper semicontinuous, and a finite average of upper semicontinuous maps with compact values is upper semicontinuous \cite[Chapter~17]{AliprantisBorder}. By Kakutani's theorem there is $x\in Q$ with $x\in G(x)$, that is, $nx=\sum_iz_i$ with $z_i\in\conv F_i(x)$. By Carath\'eodory's theorem each $z_i$ is a convex combination of finitely many points of $F_i(x)$. Fix finite sets $A_i\subset F_i(x)$ carrying such combinations and consider the polytope $P$ of coefficient vectors $\lambda=(\lambda_{i,a})_{1\le i\le n,\,a\in A_i}$ with
+\[
+\lambda_{i,a}\ge0,\qquad\sum_{a\in A_i}\lambda_{i,a}=1\ (1\le i\le n),\qquad\sum_{i=1}^n\sum_{a\in A_i}\lambda_{i,a}\,a=nx.
+\]
+It is nonempty and defined by nonnegativity and $n+3$ linear equations, so it has a vertex $\lambda$, and a vertex has at most $n+3$ positive coordinates \cite[Chapter~2]{BertsimasTsitsiklis}. Each index $i$ has at least one positive coordinate. Call $i$ \emph{varying} if it has at least two. Then at most three indices vary, and if three vary, each of them has exactly two positive coordinates.
+
+Let $y_i$ be random with $\Pr(y_i=a)=\lambda_{i,a}$, so that $\E\sum_iy_i=nx$ for any joint law of the $y_i$.
+
+\begin{lem}\label{lem:two}
+If at most two indices vary, some choice of the $y_i$ satisfies $\|\sum_iy_i-nx\|^2\le6$.
+\end{lem}
+
+\begin{proof}
+Take the $y_i$ independent. Then $\E\|\sum_iy_i-nx\|^2=\sum_i\E\|y_i-\E y_i\|^2$, a sum of at most two nonzero terms, each at most $\E\|y_i\|^2\le3$. Some outcome does not exceed the mean.
+\end{proof}
+
+Suppose that three indices vary, say $i=1,2,3$, with supports $\{c_i+u_i,\,c_i-u_i\}$. The entries of $u_i$ lie in $[-1,1]$ because both points lie in $Q$. Write $y_i=c_i+s_iu_i$ with $s_i\in\{-1,1\}$, let $U$ be the $3\times3$ matrix with columns $u_1,u_2,u_3$, and put $t_i=\lambda_{i,c_i+u_i}-\lambda_{i,c_i-u_i}=\E s_i$. Since the other $y_i$ are deterministic and the mean of $\sum_iy_i$ is $nx$, the error is
+\[
+\sum_{i=1}^ny_i-nx=U(s-t),\qquad s=(s_1,s_2,s_3)\in\{-1,1\}^3,
+\]
+for every outcome. The signs may have any joint law with $\E s=t$. For $U\in[-1,1]^{3\times3}$ and $t\in[-1,1]^3$ let
+\begin{equation}\label{eq:V}
+V(U,t)=\min\bigl\{\E\|U(s-t)\|^2:\ s\in\{-1,1\}^3\ \text{random},\ \E s=t\bigr\}.
+\end{equation}
+A law is a probability vector $p$ on the eight sign vectors, and the laws with mean $t$ form the set $\Pi(t)$ of $p$ with $\sum_sp_s\,s=t$, a nonempty polytope. The \emph{cost} of $p\in\Pi(t)$ is $\sum_sp_s\|Us\|^2-\|Ut\|^2=\E\|U(s-t)\|^2$. It is linear in $p$, so the minimum in \eqref{eq:V} is the least cost of a law in $\Pi(t)$ and is attained. Some outcome of a minimizing law has squared error at most $V(U,t)$. Theorem~\ref{thm:main}, apart from attainment, therefore follows from Lemma~\ref{lem:two} and the following theorem.
+
+\begin{thm}\label{thm:V}
+For all $U\in[-1,1]^{3\times3}$ and $t\in[-1,1]^3$, $V(U,t)\le27/4$, with equality when $t=0$ and the columns of $U$ are $(-\frac12,1,1)$, $(1,-\frac12,1)$, $(1,1,-\frac12)$.
+\end{thm}
+
+The function $V$ is continuous on the compact set $[-1,1]^{3\times3}\times[-1,1]^3$. Indeed $\Pi(t)$ is the solution set of a linear system with fixed matrix and right side affine in $t$, so it varies Lipschitz continuously in the Hausdorff metric by Hoffman's bound \cite{Hoffman52}, and the cost is jointly continuous; Berge's maximum theorem \cite[Chapter~17]{AliprantisBorder} gives continuity of the minimum. Hence $V$ attains its maximum $M$, and the example in Theorem~\ref{thm:V} shows $M\ge27/4$; it is verified in Section~\ref{sec:attain}.
+
+The case of a saturated mean is immediate. If $|t_i|=1$ for some $i$, then $s_i=t_i$ almost surely, at most two signs vary, and the independent law (the product law with these means) gives $V(U,t)\le\sum_{j\ne i}\|u_j\|^2(1-t_j^2)\le6$. Since $M>6$, every maximizer has $|t_i|<1$ for all $i$.
+
+\section{Perpendicular columns or a full row}\label{sec:ext}
+
+Write $g=(g_{12},g_{13},g_{23})$ with $g_{ij}=u_i\cdot u_j$. For a sign vector $s$,
+\begin{equation}\label{eq:heights}
+\|Us\|^2=\sum_i\|u_i\|^2+2\sum_{i<j}s_is_jg_{ij}.
+\end{equation}
+The first sum is the same for all eight sign vectors.
+
+\begin{lem}\label{lem:cone}
+There is a finite set $\mathcal L$ of linear forms on $\mathbb R^3$ with the following property. Let $t\in[-1,1]^3$ and let $\mathcal U$ be a set of matrices in $[-1,1]^{3\times3}$ whose Gram data $g$ all give each form in $\mathcal L$ the same sign, where $0$ counts as a sign of its own. Then one law in $\Pi(t)$ attains the minimum in \eqref{eq:V} for every $U\in\mathcal U$.
+\end{lem}
+
+\begin{proof}
+Lift each sign vector $s$ to the point $(s,h_s)\in\mathbb R^4$ with $h_s=\|Us\|^2$. The function $t\mapsto\min_{p\in\Pi(t)}\sum_sp_sh_s$ is the lower convex envelope of the lifted points over the cube, and $V(U,t)$ is this envelope minus $\|Ut\|^2$. For a tetrahedron $T$ with vertices in $\{-1,1\}^3$, that is, a set of four affinely independent sign vectors, let $\alpha_T$ be the affine function on $\mathbb R^3$ that agrees with $h$ on $T$. If $\alpha_T(s)\le h_s$ for all eight $s$, then $\alpha_T$ is an affine minorant of the heights, so the envelope is at least $\alpha_T$, and for $t\in\conv T$ the barycentric law on $T$ has cost $\alpha_T(t)$; it is therefore optimal. Conversely, the envelope is piecewise affine, equal on each cell of the lower subdivision to an affine function $\alpha_T$ of this kind, and a full-dimensional cell of the lower subdivision that contains $t$ contains it in the convex hull of some tetrahedron of its own vertices, all of which lie on one such $\alpha_T$. So at each $t$ some $T$ with $t\in\conv T$ passes all eight tests $\alpha_T(s)\le h_s$.
+
+By \eqref{eq:heights} each difference $h_s-\alpha_T(s)$ is a linear form in $g$ with coefficients determined by $T$ and $s$: the constant $\sum_i\|u_i\|^2$ is common to all heights and cancels. Let $\mathcal L$ consist of these forms that are not identically zero. On $\mathcal U$ the tetrahedra passing all tests are therefore the same for every matrix, and one such tetrahedron $T$ with $t\in\conv T$ supplies a law optimal for every $U\in\mathcal U$.
+\end{proof}
+
+\begin{lem}\label{lem:rows}
+There is a maximizer $(U,t)$ of $V$ in which every row of $U$ has an entry of absolute value one.
+\end{lem}
+
+\begin{proof}
+Replacing a row $r$ of $U$ by $\mu r$ with $\mu\ge1$ multiplies the $r$-th coordinate of $U(s-t)$ by $\mu$ and so does not decrease the cost of any law; hence it does not decrease $V$. Starting from any maximizer, scale each nonzero row until its largest entry has absolute value one. If a row is zero, replace it by $(1,0,0)$: the cost of every law in $\Pi(t)$ increases by $\E(s_1-t_1)^2=1-t_1^2>0$, so $V$ increases strictly, which is impossible at a maximizer.
+\end{proof}
+
+Recall that a row is full if all three of its entries have absolute value one.
+
+\begin{prop}\label{prop:dichotomy}
+Let $(U,t)$ be a maximizer of $V$. Then $g=0$ or $U$ has a full row.
+\end{prop}
+
+\begin{proof}
+Suppose $g\ne0$ and no row is full. In each row $r$ choose an entry of absolute value less than one, in column $j(r)$, and for $b\in\mathbb R^3$ and small $\tau$ let $U(\tau)$ be $U$ with that entry replaced by $U_{r,j(r)}+\tau b_r$. In each product $U_{ri}U_{rk}$ with $i\ne k$ at most one factor changes, so $g(\tau)=g+\tau\,\Gamma(b)$ with $\Gamma$ linear in $b$. Let $\mathcal L_0\subset\mathcal L$ be the forms that vanish at $g$. They all vanish at the nonzero vector $g$, so they span a space of dimension at most two, and the conditions $\ell(\Gamma(b))=0$ for $\ell\in\mathcal L_0$ are at most two linear equations on $b\in\mathbb R^3$. Choose a nonzero solution $b$. For $|\tau|$ small every entry of $U(\tau)$ stays in $[-1,1]$, every form in $\mathcal L_0$ vanishes at $g(\tau)$, and every other form in $\mathcal L$ keeps its sign. By Lemma~\ref{lem:cone}, applied to the set of these $U(\tau)$, one law $p\in\Pi(t)$ is optimal for all of them, so $V(U(\tau),t)$ equals the cost of $p$, which is a quadratic polynomial in $\tau$. The $r$-th coordinate of $U(\tau)(s-t)$ is that of $U(s-t)$ plus $\tau b_r(s_{j(r)}-t_{j(r)})$, so the coefficient of $\tau^2$ is
+\[
+\sum_rb_r^2\,\E(s_{j(r)}-t_{j(r)})^2=\sum_rb_r^2\bigl(1-t_{j(r)}^2\bigr)>0,
+\]
+using $|t_j|<1$ at a maximizer. A strictly convex function of $\tau$ has no local maximum at $\tau=0$, a contradiction.
+\end{proof}
+
+By Lemma~\ref{lem:rows} and Proposition~\ref{prop:dichotomy}, $M$ is attained either at some $(U,t)$ with $g=0$ or at some $(U,t)$ with a full row in which every row has an entry of absolute value one. Sections~\ref{sec:perp} and~\ref{sec:full} show that $V\le27/4$ in both cases.
+
+\section{Perpendicular columns}\label{sec:perp}
+
+If $g=0$, then by \eqref{eq:heights} all eight sign vectors have the same height, so every law in $\Pi(t)$ has cost $\sum_i\|u_i\|^2-\|Ut\|^2=\sum_i\|u_i\|^2(1-t_i^2)$, and $V(U,t)\le\sum_i\|u_i\|^2$. It remains to bound the total squared length of three mutually perpendicular vectors in $Q$. If one of them is zero, the other two contribute at most $3+3=6$. Otherwise write $u_i=\rho_iq_i$ with $(q_1,q_2,q_3)$ orthonormal; the constraint $u_i\in Q$ is $\rho_i\le1/\|q_i\|_\infty$, so for a fixed frame the largest total is
+\[
+\Phi(q_1,q_2,q_3)=\sum_{i=1}^3\frac1{\|q_i\|_\infty^2}.
+\]
+
+\begin{prop}\label{prop:frames}
+For every orthonormal frame, $\Phi\le27/4$.
+\end{prop}
+
+\begin{proof}
+$\Phi$ is continuous on the compact orthogonal group, so it has a maximizing frame. At a maximizing frame at least two of the $q_i$ have a tie for their largest absolute coordinate. Otherwise two of them, say $q_1$ and $q_2$, have unique largest coordinates $k_1$ and $k_2$. Rotate them in their plane, $q_1(\theta)=q_1\cos\theta+q_2\sin\theta$ and $q_2(\theta)=-q_1\sin\theta+q_2\cos\theta$, keeping $q_3$. For small $|\theta|$ the largest coordinates stay $k_1$ and $k_2$, and $q_1(\theta)_{k_1}=R_1\cos(\theta-\varphi_1)$ with $R_1>0$, so $1/\|q_1(\theta)\|_\infty^2=R_1^{-2}\sec^2(\theta-\varphi_1)$, a strictly convex function of $\theta$ near $0$; likewise for $q_2$. Their sum would be strictly convex near $\theta=0$, so $\theta=0$ would not be a local maximum.
+
+Scale each of the two tied columns so that its largest absolute entry is one, and call the scaled vectors $v_1,v_2$; each has at least two entries of absolute value one.
+
+\emph{The two tied pairs of coordinates are the same.} After permuting and reflecting coordinates, and replacing $v_i$ by $-v_i$, we have $v_1=(1,1,\xi)$ and $v_2=(1,\sigma,\eta)$ with $\sigma=\pm1$ and $|\xi|,|\eta|\le1$. Orthogonality gives $1+\sigma+\xi\eta=0$, which is impossible for $\sigma=1$; so $\sigma=-1$ and $\xi\eta=0$. Interchanging $v_1$ and $v_2$ and reflecting the second coordinate if needed, $\xi=0$. The direction perpendicular to both is that of $v_1\times v_2=(\eta,-\eta,-2)$, scaled to $(\eta/2,-\eta/2,-1)$. The total is $2+(2+\eta^2)+(1+\eta^2/2)=5+\frac32\eta^2\le\frac{13}2$.
+
+\emph{The two pairs differ.} Two pairs of coordinates from $\{1,2,3\}$ share exactly one coordinate; put it first. After reflections, $v_1=(1,1,\xi)$ and $v_2=(1,\eta,1)$. Orthogonality gives $1+\xi+\eta=0$; write $\xi=-\omega$, $\eta=\omega-1$, where $|\xi|,|\eta|\le1$ forces $0\le\omega\le1$. Interchanging $v_1,v_2$ and the second and third coordinates replaces $\omega$ by $1-\omega$, so we may assume $\omega\le\frac12$. Put $N_1=\|v_1\|^2=2+\omega^2$ and $N_2=\|v_2\|^2=2+(1-\omega)^2$. The cross product $v_1\times v_2=(1-\xi\eta,\,\xi-1,\,\eta-1)=(1-\omega+\omega^2,\,-1-\omega,\,\omega-2)$ has squared length $N_1N_2$, and for $0\le\omega\le\frac12$ its largest absolute entry is $2-\omega$. The total is therefore $N_1+N_2+N_1N_2/(2-\omega)^2$, and
+\begin{equation}\label{eq:identity}
+4(2-\omega)^2\Bigl[\frac{27}4-N_1-N_2-\frac{N_1N_2}{(2-\omega)^2}\Bigr]=(1-2\omega)\bigl(6\omega^3-21\omega^2+28\omega+4\bigr).
+\end{equation}
+Both sides are polynomials of degree four in $\omega$, and the identity is checked by expanding them. On $[0,\frac12]$ the cubic is positive, since $6\omega^3+4>0$ and $28\omega-21\omega^2=\omega(28-21\omega)\ge0$. Hence the total is at most $27/4$, with equality only at $\omega=\frac12$.
+\end{proof}
+
+At $\omega=\frac12$ the three scaled directions are $(1,1,-\frac12)$, $(1,-\frac12,1)$ and, from $(\frac34,-\frac32,-\frac32)$ scaled by $\frac23$, $(\frac12,-1,-1)$, which up to signs and order are the columns of Theorem~\ref{thm:V}. Equality in the first case is impossible, so every perpendicular configuration with total $27/4$ is of this form up to signed permutations of coordinates and of columns.
+
+\begin{cor}[Teixeira and Meyer {\cite[Theorem~V.1]{TeixeiraMeyer}}]\label{cor:twothirds}
+Every $3\times3$ orthogonal matrix has an entry of absolute value at least $2/3$.
+\end{cor}
+
+\begin{proof}
+If every entry had absolute value less than $2/3$, then $\Phi>3\cdot\frac94=\frac{27}4$ for its columns.
+\end{proof}
+
+The bound $2/3$ is attained by the orthogonal matrix
+\[
+\frac13\begin{pmatrix}-1&2&2\\2&-1&2\\2&2&-1\end{pmatrix}.
+\]
+Teixeira and Meyer also classify the equality cases. Equivalently, the least possible largest absolute entry of a $3\times3$ orthogonal matrix is $2/3$. Jaming and Matolcsi \cite{JamingMatolcsi} study flat orthogonal matrices, those whose entries all have absolute value close to $1/\sqrt d$, as a relaxation of the Hadamard problem.
+
+\section{A full row}\label{sec:full}
+
+Suppose $U$ has a full row and every row has an entry of absolute value one. Permuting rows of $U$ (an isometry of $\mathbb R^3$) and replacing $u_i$, $s_i$, $t_i$ by $-u_i$, $-s_i$, $-t_i$ for some $i$ do not change $V$, and neither does multiplying a row of $U$ by $-1$ or permuting the columns of $U$ together with the coordinates of $s$ and $t$. Using these operations we may take the full row to be $(1,1,1)$ and the second row to be $(1,\kappa_1,\kappa_2)$; the third row has an entry of absolute value one, and after a reflection of that row and, if needed, interchanging the second and third columns together with $\kappa_1$ and $\kappa_2$, it is $(1,\kappa_3,\kappa_4)$ or $(\kappa_3,1,\kappa_4)$. Thus it suffices to prove $V(U,t)\le27/4$ for all $t$ and all
+\begin{equation}\label{eq:boxes}
+U_0=\begin{pmatrix}1&1&1\\1&\kappa_1&\kappa_2\\1&\kappa_3&\kappa_4\end{pmatrix},\qquad U_1=\begin{pmatrix}1&1&1\\1&\kappa_1&\kappa_2\\\kappa_3&1&\kappa_4\end{pmatrix},
+\end{equation}
+with $(\kappa_1,\kappa_2,\kappa_3,\kappa_4)\in[-1,1]^4$.
+
+We prove this by a finite certificate. For a closed simplex $\Delta\subset[-1,1]^4$ of parameters with vertices $\pi_0,\dots,\pi_4$, a \emph{certificate} is one of the following.
+\begin{enumerate}
+\item[(I)] $\sum_i\|u_i\|^2\le27/4$ at every vertex $\pi_k$.
+\item[(C)] A family $\mathcal T$ of tetrahedra with vertices in $\{-1,1\}^3$, as in the proof of Lemma~\ref{lem:cone}, with pairwise disjoint interiors and total volume $8$, and for every $T\in\mathcal T$ and every vertex $\pi_k$ a point $o_{T,k}\in\mathbb R^3$ with $\|U(\pi_k)s-o_{T,k}\|^2\le27/4$ for the four $s\in T$.
+\end{enumerate}
+
+\begin{lem}\label{lem:cert}
+If $\Delta$ has a certificate, then $V(U(\pi),t)\le27/4$ for every $\pi\in\Delta$ and every $t\in[-1,1]^3$.
+\end{lem}
+
+\begin{proof}
+Write $\pi=\sum_k\beta_k\pi_k$ with barycentric weights $\beta_k$. The entries of $U(\pi)$ are affine in $\pi$. In case (I), $\sum_i\|u_i\|^2$ is a convex function of $\pi$, so it is at most $27/4$ on $\Delta$, and the independent law gives $V\le\sum_i\|u_i\|^2(1-t_i^2)\le27/4$. In case (C), the tetrahedra cover the cube: they lie in it, and a closed finite union of full volume misses no open set. Choose $T\in\mathcal T$ with $t\in\conv T$ and let $p$ be the barycentric law of $t$ on the four vertices of $T$, so $p\in\Pi(t)$. Put $o=\sum_k\beta_ko_{T,k}$. For $s\in T$,
+\[
+\|U(\pi)s-o\|=\Bigl\|\sum_k\beta_k\bigl(U(\pi_k)s-o_{T,k}\bigr)\Bigr\|\le\frac{3\sqrt3}2.
+\]
+With $Y=U(\pi)s$ for $s$ distributed by $p$, $\E\|Y-\E Y\|^2=\E\|Y-o\|^2-\|\E Y-o\|^2\le27/4$, and $\E\|Y-\E Y\|^2=\E\|U(\pi)(s-t)\|^2$ is the cost of $p$.
+\end{proof}
+
+The program \texttt{check\_full\_row.py} (see the data availability statement) produces certificates for a subdivision of the parameter cube $[-1,1]^4$ of each matrix in \eqref{eq:boxes}. Every test is an exact integer or rational comparison. Each parameter cube is first cut into the $24$ simplices of the Kuhn triangulation \cite{Kuhn60} of $[-1,1]^4$, and a simplex without a certificate is bisected at the midpoint of a longest edge, the two halves being obtained by replacing one endpoint of that edge by the midpoint. All parameter vertices are dyadic rationals, held as integers in a common unit. For (C), the program lists the tetrahedra of sign vectors that admit a center at every vertex of the simplex, trying the midpoint of a pair of the four images, the circumcenter of a triangle in its own plane, and the circumcenter of the four; a center is accepted only after the four squared distances are checked exactly. It then searches the list for a family with disjoint interiors and total volume $8$; disjointness of two tetrahedra is certified by an integer direction on which their projections are disjoint, and volumes are absolute values of integer determinants.
+
+With the depth limits given in the program the subdivision closes completely: $1{,}776$ simplices carry certificates of type (C) and $20$ of type (I), with $414$ distinct matrices evaluated, and no simplex is left uncertified. Together with Lemma~\ref{lem:cert} this proves $V\le27/4$ in the full-row case, and completes the proof of Theorem~\ref{thm:V}.
+
+\begin{rem}\label{rem:strict}
+The same program, run with $27/4$ replaced by $20/3$, certifies $V\le20/3$ for both matrices with $2{,}834$ certificates of type (C) and none left over. So at a maximizer of $V$ no row is full, since by Lemma~\ref{lem:rows} scaling rows only increases $V$ and preserves a full row. Proposition~\ref{prop:dichotomy} then gives $g=0$, the equality case of Proposition~\ref{prop:frames} fixes the frame and all three squared lengths equal to $9/4$, and $V=\sum_i\frac94(1-t_i^2)$ forces $t=0$. Thus the maximizers of $V$ are exactly the configurations of Theorem~\ref{thm:V} up to signed permutations of coordinates and columns.
+\end{rem}
+
+\section{Attainment}\label{sec:attain}
+
+Let $u_1=(-\frac12,1,1)$, $u_2=(1,-\frac12,1)$, $u_3=(1,1,-\frac12)$ in $Q$. Then $u_i\cdot u_j=-\frac12-\frac12+1=0$ for $i\ne j$ and $\|u_i\|^2=\frac94$, so $\|\sum_is_iu_i\|^2=\frac{27}4$ for all eight sign vectors $s$. In particular $V(U,0)=27/4$, which is the equality statement of Theorem~\ref{thm:V}.
+
+Let $n\ge3$. In $C=[0,1]^3$ put $e=(\frac12,\frac12,\frac12)$, $S_i=\{e+\frac12u_i,\,e-\frac12u_i\}$ for $i=1,2,3$ and $S_i=\{e\}$ for $i>3$, and
+\[
+F_i(x)=\operatorname*{arg\,min}_{a\in S_i}\,(x-e)\cdot a.
+\]
+Each $F_i$ is upper semicontinuous with nonempty values in $C$, since $S_i$ is finite and $a\mapsto(x-e)\cdot a$ is continuous in $x$ \cite[Theorem~17.31]{AliprantisBorder}. Fix $x\in C$ and $y_i\in F_i(x)$, and put $\bar y=\frac1n\sum_iy_i$. Each $y_i$ minimizes $(x-e)\cdot a$ over $S_i$, so $\bar y$ minimizes $(x-e)\cdot\bar a$ over all averages $\bar a=\frac1n\sum_ia_i$ with $a_i\in S_i$. The point $e$ is the mean of these averages under independent fair choices, so $(x-e)\cdot\bar y\le(x-e)\cdot e$. Hence
+\[
+\begin{aligned}
+\|x-\bar y\|^2&=\|x-e\|^2+\|e-\bar y\|^2-2(x-e)\cdot(\bar y-e)\\
+&\ge\|e-\bar y\|^2=\frac1{4n^2}\Bigl\|\sum_{i=1}^3s_iu_i\Bigr\|^2=\frac{27}{16n^2},
+\end{aligned}
+\]
+where $s_i=\pm1$ records which point of $S_i$ was chosen. Every value of $F_i$ has at most two points. This proves the second statement of Theorem~\ref{thm:main}.
+
+\begin{prop}\label{prop:hadamard}
+Let $H$ be a Hadamard matrix of order $d$ and let $n\ge d$. There are upper semicontinuous maps $F_1,\dots,F_n$ from $[0,1]^d$ to its nonempty subsets of at most two points such that $\|x-\frac1n\sum_iy_i\|^2\ge d^2/(4n^2)$ for every $x\in[0,1]^d$ and every choice of $y_i\in F_i(x)$. So the bound $d^2/(4n^2)$ of the Shapley--Folkman--Starr theorem is sharp on $[0,1]^d$.
+\end{prop}
+
+\begin{proof}
+We work now in $\mathbb R^d$. Let $\nu_1,\dots,\nu_d$ be the columns of $H$ and $e=(\frac12,\dots,\frac12)\in[0,1]^d$. The entries of $e\pm\frac12\nu_i$ are $0$ and $1$, so $S_i=\{e+\frac12\nu_i,\,e-\frac12\nu_i\}$ lies in $[0,1]^d$ for $i\le d$; put $S_i=\{e\}$ for $d<i\le n$, and define $F_i$ by the arg\,min above. The argument above applies without change and gives $\|x-\bar y\|^2\ge\frac1{4n^2}\|\sum_{i=1}^ds_i\nu_i\|^2$. The columns are orthogonal with $\|\nu_i\|^2=d$, so $\|\sum_{i=1}^ds_i\nu_i\|^2=d^2$ for every choice of signs, and the right side is $d^2/(4n^2)$.
+\end{proof}
+
+\section{Open problems}\label{sec:open}
+
+\begin{question}
+What is the sharp constant on $[0,1]^d$ when no Hadamard matrix of order $d$ exists, for instance $d=5,6,7$? The reduction of Section~\ref{sec:reduction} works in every dimension and leaves the maximum of the analogue of $V$ over $U\in[-1,1]^{d\times d}$ and $t\in[-1,1]^d$, together with the configurations in which fewer than $d$ indices vary. Its perpendicular case asks how flat an orthogonal frame in $[-1,1]^d$ can be, in the sense of Jaming and Matolcsi~\cite{JamingMatolcsi}. When a Hadamard matrix of order $d$ exists the constant is $d^2/4$ by Proposition~\ref{prop:hadamard}, and for $d=3$ it is $27/16$ by Theorem~\ref{thm:main}.
+\end{question}
+
+\begin{question}
+For $n=1$ and $n=2$ at most $n$ indices vary in Section~\ref{sec:reduction}, but their supports may be larger: four points for $n=1$, and for $n=2$ four points when one index varies and three and two points when both vary. What are the sharp constants for these $n$?
+\end{question}
+
+\begin{question}
+What is the sharp constant for weighted averages $\sum_iw_iy_i$ with fixed weights $w_i>0$ summing to one?
+\end{question}
+
+\section*{Acknowledgments and funding}
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. The method is described in~\cite{MathBrainPaper}.
+
+The research presented in this paper was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation program (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, and by the Israel Science Foundation (grants 2258/19 and 4101/25).
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. Both are named in the funding statement above.
+
+\section*{Data availability}
+The program \texttt{check\_full\_row.py} produces the certificates of Section~\ref{sec:full}; it and its two modules use only Python's standard library. The program and its output are in the repository
+\begin{center}\url{https://github.com/yspennstate/sharp-selection-residual-three-cube}.\end{center}
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+The AI agents Claude (Anthropic) and Codex (OpenAI), working through Math Brain~\cite{MathBrainRepo}, a shared memory for multi-agent mathematical research \cite{MathBrainPaper} built on the Brain framework \cite{BrainFramework}, produced the statements, proofs, computations and examples of this paper under the author's direction. The following results are due to others and are used here: Kakutani's fixed point theorem~\cite{Kakutani41}, the Shapley--Folkman--Starr theorem~\cite{Starr69}, Hoffman's bound~\cite{Hoffman52}, Berge's maximum theorem and the closure properties of upper semicontinuous maps~\cite{AliprantisBorder}, the bound on the number of positive coordinates of a vertex of a polyhedron~\cite{BertsimasTsitsiklis}, and the Kuhn triangulation~\cite{Kuhn60}. The bounds of Budish and Reny~\cite{BudishReny20} and of Wu and Tang~\cite{WuTang24} and the results of Ambrus and Bozzai~\cite{AmbrusBozzai} are recalled for comparison in the introduction. Corollary~\ref{cor:twothirds}, that the least possible largest absolute entry of a $3\times3$ orthogonal matrix (a quantity studied by Jaming and Matolcsi~\cite{JamingMatolcsi}) is $2/3$, is a theorem of Teixeira and Meyer~\cite{TeixeiraMeyer}; it is obtained here again as a consequence of the argument of Section~\ref{sec:perp}. The certificates of Section~\ref{sec:full} were produced and checked by computer with the programs named in the data availability statement. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\begin{thebibliography}{99}
+\bibitem{AliprantisBorder} C.~D. Aliprantis and K.~C. Border, \emph{Infinite Dimensional Analysis: A Hitchhiker's Guide}, 3rd ed., Springer, Berlin, 2006.
+\bibitem{AmbrusBozzai} G.~Ambrus and R.~Bozzai, Colorful vector balancing, \emph{Mathematika} \textbf{70} (2024), no.~4, e12274, \doi{10.1112/mtk.12274}.
+\bibitem{BertsimasTsitsiklis} D.~Bertsimas and J.~N. Tsitsiklis, \emph{Introduction to Linear Optimization}, Athena Scientific, Belmont, MA, 1997.
+\bibitem{BudishReny20} E.~Budish and P.~J. Reny, An improved bound for the Shapley--Folkman theorem, \emph{J. Math. Econom.} \textbf{89} (2020), 48--52, \doi{10.1016/j.jmateco.2020.04.003}.
+\bibitem{Hoffman52} A.~J. Hoffman, On approximate solutions of systems of linear inequalities, \emph{J. Research Nat. Bur. Standards} \textbf{49} (1952), 263--265, \doi{10.6028/jres.049.027}.
+\bibitem{JamingMatolcsi} P.~Jaming and M.~Matolcsi, On the existence of flat orthogonal matrices, \emph{Acta Math. Hungar.} \textbf{147} (2015), 179--188, \doi{10.1007/s10474-015-0517-6}.
+\bibitem{Kakutani41} S.~Kakutani, A generalization of Brouwer's fixed point theorem, \emph{Duke Math. J.} \textbf{8} (1941), 457--459, \doi{10.1215/S0012-7094-41-00838-4}.
+\bibitem{Kuhn60} H.~W. Kuhn, Some combinatorial lemmas in topology, \emph{IBM J. Res. Develop.} \textbf{4} (1960), 518--524, \doi{10.1147/rd.45.0518}.
+\bibitem{Starr69} R.~M. Starr, Quasi-equilibria in markets with non-convex preferences, \emph{Econometrica} \textbf{37} (1969), 25--38, \doi{10.2307/1909201}.
+\bibitem{TeixeiraMeyer} I.~Teixeira and D.~Meyer, Deep holes in the Clifford hierarchy, preprint, 2026, arXiv:2608.08403.
+\bibitem{WuTang24} H.~Wu and A.~Tang, An even tighter bound for the Shapley--Folkman--Starr theorem, \emph{J. Math. Econom.} \textbf{114} (2024), 103028, \doi{10.1016/j.jmateco.2024.103028}.
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
+\end{thebibliography}
+\end{document}
